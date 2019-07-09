@@ -44,7 +44,7 @@ This is home page
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="#">LinkedIn</a>
-          <a class="nav-item nav-link" href="/blog">Blog</a>
+          <a class="nav-item nav-link active" href="/blog">Blog</a>
           <a class="nav-item nav-link" href="#">Resume</a>
         </div>
       </div>
@@ -52,37 +52,22 @@ This is home page
   </header>
 
   <main role="main">
+    <div class="container">
+      <h1 class="text-center pt-3">Welcome to the MisterQwi blog</h1>
+      <br/>
+      <br/>
+      <h2>Latest post</h2>
+      <hr />
 
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hi it's MisterQwi</h1>
-        <p class="lead text-muted">I love web site</p>
-        <p>
-          <a href="mailto:misterqwi@yopmail.com" class="btn btn-primary my-2">Fake email me</a>
-        </p>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row">
-
-          {%for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" src= "{{job.image.url}}"></img>
-              <div class="card-body">
-                <p class="card-text">{{ job.summary }}</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-
-      </div>
+      {% for blog in blogs.all %}
+        <a href=""><h3>{{ blog.title }}</h3></a>
+        {{ blog.pub_date_pretty }}
+        <br />
+        <img class="img-fluid" src="{{ blog.image.url}}" height=200 width=200 />
+        <br />
+        <p>{{ blog.summary}}</p>
+      {% endfor %}
     </div>
-
   </main>
 
   <footer class="text-muted">
